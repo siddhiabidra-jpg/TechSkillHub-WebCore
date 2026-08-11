@@ -1,4 +1,3 @@
-```javascript
 require("dns").setServers(["8.8.8.8", "8.8.4.4"]);
 require("dotenv").config();
 
@@ -23,12 +22,11 @@ app.use(express.static(path.join(__dirname, "public")));
 const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "index.html"));
+res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 connectDB();
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+console.log("Server is running on port " + PORT);
 });
-```

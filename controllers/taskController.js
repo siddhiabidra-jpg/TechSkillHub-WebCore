@@ -1,7 +1,5 @@
-```javascript
 const Task = require("../models/Task");
 
-// Create a new task
 const createTask = async (req, res) => {
     try {
         const { title, description, status, priority, dueDate } = req.body;
@@ -26,10 +24,11 @@ const createTask = async (req, res) => {
     }
 };
 
-// Get all tasks for logged-in user
 const getTasks = async (req, res) => {
     try {
-        const tasks = await Task.find({ userId: req.user.id });
+        const tasks = await Task.find({
+            userId: req.user.id
+        });
 
         res.status(200).json(tasks);
     } catch (error) {
@@ -40,7 +39,6 @@ const getTasks = async (req, res) => {
     }
 };
 
-// Update a task
 const updateTask = async (req, res) => {
     try {
         const task = await Task.findOneAndUpdate(
@@ -70,7 +68,6 @@ const updateTask = async (req, res) => {
     }
 };
 
-// Delete a task
 const deleteTask = async (req, res) => {
     try {
         const task = await Task.findOneAndDelete({
@@ -101,4 +98,3 @@ module.exports = {
     updateTask,
     deleteTask
 };
-```

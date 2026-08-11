@@ -1,3 +1,4 @@
+```javascript
 require("dns").setServers(["8.8.8.8", "8.8.4.4"]);
 require("dotenv").config();
 
@@ -19,7 +20,7 @@ app.use("/api/auth", authRoutes);
 // Serve frontend files
 app.use(express.static(path.join(__dirname, "public")));
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "index.html"));
@@ -28,5 +29,6 @@ app.get("/", (req, res) => {
 connectDB();
 
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
+```
